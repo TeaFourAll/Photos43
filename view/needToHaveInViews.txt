@@ -1,0 +1,6 @@
+views for all of these:
+admin
+album display
+loginpage
+photo display
+search display
