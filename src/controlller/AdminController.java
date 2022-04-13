@@ -1,4 +1,4 @@
-package controlller;
+package src.controlller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -13,9 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-
 import javax.swing.plaf.ButtonUI;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,28 +27,25 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-import model.User;
-import controlller.LoginController;
-
+import src.controlller.LoginController;
+import src.model.User;
 import javafx.event.ActionEvent;
 
 public class AdminController {
-//add new user button
-	Button addUser;
-	// delete an existing User button
-	Button delUser;
-	//delete user
-	ListView<User> userList;
+//user buttons
+	ButtonUI addUser;
+	ButtonUI delUser;
+    	//confirming addition of new user button
+	ButtonUI confirmAdd;
+
     //logout button 
-	Button aLogout;
+	ButtonUI aLogout;
     //add new user 
 	TextField userField;
-    //confirming addition of new user button
-	ButtonUI confirmAdd;
-	//available Users to login  
-	List<String> list=new ArrayList<>();
 
-	 //Main start method for AdminController
+	//lists
+	ListView<User> userList;
+	List<String> list=new ArrayList<>();
 	List<User> usersList=new ArrayList<>();
 	
 	private ObservableList<String> obsList;  
@@ -88,8 +83,7 @@ public class AdminController {
 			if (alert.getResult() == ButtonType.YES) {
 				userList.getItems().remove(selectedUser);
 				autoSave();
-				
-		
+						
 			}
 	    }
 		else {
@@ -104,7 +98,7 @@ public class AdminController {
 	public void confirm(ActionEvent e) {
 		if (userField.getText().trim().length()==0 || userField.getText()==null) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setHeaderText("No username entered! Please enter a username");
+			alert.setHeaderText("Nothing entered, Please enter a username");
 			alert.showAndWait();
 		}
 		else {
@@ -136,7 +130,7 @@ public class AdminController {
 	public void logout() throws IOException{
 		Stage stage = new Stage();
 		FXMLLoader loader = new FXMLLoader();   
-		loader.setLocation(getClass().getResource("/view/loginpage.fxml"));
+		loader.setLocation(getClass().getResource("/view/Loginpage.fxml"));
 		AnchorPane root = (AnchorPane)loader.load();
 		LoginController loginControl = loader.getController();
 		loginControl.start(stage);
