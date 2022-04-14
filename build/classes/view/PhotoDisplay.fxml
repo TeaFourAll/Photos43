@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="671.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PhotoDisplayController">
+   <children>
+      <SplitPane dividerPositions="0.21368798565451283" layoutX="-1.0" orientation="VERTICAL" prefHeight="671.0" prefWidth="923.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="154.0" prefWidth="922.0">
+               <children>
+                  <ListView fx:id="photoList" layoutX="16.0" layoutY="50.0" orientation="HORIZONTAL" prefHeight="78.0" prefWidth="890.0" />
+                  <Button fx:id="backToAlbum" layoutX="16.0" layoutY="13.0" mnemonicParsing="false" onAction="#backToAlbum" text="Back to Album View" />
+                  <Button fx:id="addPhoto" layoutX="832.0" layoutY="14.0" mnemonicParsing="false" onAction="#addPhoto" text="Add Photo" />
+                  <TextField fx:id="albumHeader" alignment="CENTER" editable="false" layoutX="399.0" layoutY="13.0" prefHeight="26.0" prefWidth="400.0" text="**ALBUM NAME**" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="200.0" fitWidth="266.0" layoutX="46.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" />
+
+
+                  <Button fx:id="delPhoto" layoutX="813.0" layoutY="14.0" mnemonicParsing="false" onAction="#delPhoto" text="Delete Photo" />
+                  <Button fx:id="addCaptionButton" layoutX="396.0" layoutY="450.0" mnemonicParsing="false" onAction="#addCaption" text="Edit Caption" />
+                  <Button fx:id="confirmCaption" layoutX="490.0" layoutY="480.0" mnemonicParsing="false" onAction="#confirm" text="Confirm" />
+                  <Button fx:id="movePhotoP" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#movePhoto" text="Move Photo" />
+                  <Button fx:id="copyPhoto" layoutX="122.0" layoutY="14.0" mnemonicParsing="false" onAction="#copyPhoto" text="Copy Photo" />
+                  <TextField fx:id="caption" promptText="Click 'Edit Caption' to edit caption" editable="false" layoutX="161.0" layoutY="449.0" prefHeight="26.0" prefWidth="223.0" />
+                  <TextField fx:id="dateCapturedField" editable="false" layoutX="720.0" layoutY="109.0" prefHeight="26.0" prefWidth="165.0" />
+                  <Label layoutX="96.0" layoutY="449.0" prefHeight="26.0" prefWidth="51.0" text="Caption:" />
+                  <Label layoutX="735.0" layoutY="84.0" text="Date Captured:" />
+                  <Button fx:id="prevPhoto" layoutX="22.0" layoutY="437.0" mnemonicParsing="false" onAction="#prevPhoto" text="&lt;&lt;" />
+                  <Button fx:id="nextPhoto" layoutX="583.0" layoutY="436.0" mnemonicParsing="false" onAction="#nextPhoto" text="&gt;&gt;" />
+                  <Button fx:id="captionCancel" layoutX="490.0" layoutY="437.0" mnemonicParsing="false" onAction="#captionCancel" text="Cancel" />
+                  <ImageView fx:id="photoView" fitHeight="377.0" fitWidth="700.0" layoutX="17.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" />
+                  <ListView fx:id="tagListView" layoutX="725.0" layoutY="162.0" prefHeight="175.0" prefWidth="175.0" />
+                  <Label layoutX="735.0" layoutY="143.0" text="Tags:" />
+                  <TextField editable="false" layoutX="700.0" layoutY="50.0" prefHeight="26.0" prefWidth="128.0" text="Selected Photo Info:" /> 
+                  <Button fx:id="addTag" layoutX="740.0" layoutY="350.0" mnemonicParsing="false" onAction="#addTag" text="Add Tags" />
+                  <Button fx:id="delTag" layoutX="820.0" layoutY="350.0" mnemonicParsing="false" onAction="#delTag" text="Delete Tags" />
+                  <TextField fx:id="tagNameField" editable="true" layoutX="756.0" layoutY="399.0" prefHeight="26.0" prefWidth="102.0" promptText="Add Tag Name" />
+                  <TextField fx:id="tagValueField" editable="true" layoutX="756.0" layoutY="427.0" prefHeight="26.0" prefWidth="102.0" promptText="Add Tag Value" />
+                  <Button fx:id="confirmTag" layoutX="735.0" layoutY="460.0" mnemonicParsing="false" onAction="#confirmAddTag" text="Confirm" />
+                  <Button fx:id="cancelTag" layoutX="815.0" layoutY="460.0" mnemonicParsing="false" onAction="#tagCancel" text="Cancel" />
+                  <TextField fx:id="albumField" editable="true" layoutX="250.0" layoutY="14.0" prefHeight="26.0" prefWidth="225.0" promptText="Enter Name of Album to Move/Copy" />
+                  <Button fx:id="confirmMove" layoutX="500.0" layoutY="14.0" mnemonicParsing="false" onAction="#moveConfirm" text="Confirm" />
+
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
+
+
+
+
+
+
+
