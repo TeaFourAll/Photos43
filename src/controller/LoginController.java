@@ -22,12 +22,12 @@ import model.User;
  */
 public class LoginController {
 	/**
-	 * The FXML TextField for the username
+	 * text field for username
 	 */
 	@FXML
 	TextField usernameTextField;
 	/**
-	 * The FXML Button to click to login
+	 * button to login
 	 */
 	@FXML
 	Button login;

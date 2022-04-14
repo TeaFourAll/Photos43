@@ -1,17 +1,9 @@
 package controller;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.io.*;
+import java.text.*;
+import java.util.*;
+import model.*;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,11 +23,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import model.Album;
-import model.Photo;
-import model.Tag;
-import model.User;
+
 
 /**
  * handles user control and logic for search display 
@@ -45,45 +33,84 @@ import model.User;
  */
 public class SearchController {
 
-	
+	/**
+	 * button to create album from search
+	 */
 	@FXML
     Button sCreateAlbum;
+	/**
+	 * button to go back to album from search
+	 */
 	@FXML
     Button sBacktoAlbums;
+	/**
+	 * button to add a tag
+	 */
 	@FXML
 	Button addTag;
+	/**
+	 * current user
+	 */
 	User currentUser;
+	/**
+	 * bchoice box for tag
+	 */
 	@FXML
 	ChoiceBox<String> TypeChoiceBox;
+	/**
+	 * button to clear dates
+	 */
 	@FXML
 	Button clearDates;
+	/**
+	 * choice box for value of tag
+	 */
 	@FXML
     ChoiceBox<String> ValueChoiceBox;
+	/**
+	 * listview of tags
+	 */
 	@FXML
 	ListView<Tag> tagListView;
+	/**
+	 * listview of photos
+	 */
 	@FXML
 	ListView<Photo> photoListView;
+	/**
+	 * datepicker of dates
+	 */
 	@FXML
 	DatePicker from;
+	/**
+	 * datepicker of dates
+	 */
 	@FXML
 	DatePicker to;
+	/**
+	 * button to delete tag
+	 */
+	
 	@FXML
 	Button delTag;
+	/**
+	 * button to search tag
+	 */
 	@FXML
 	Button search;
-	
-	
-   
+   /**
+	 * list of users
+	 */
 	List<User> users;
 	List<String> tagtype = new ArrayList<String>();
 	List<String> tagvalue = new ArrayList<String>();
 	List<Photo> list=new ArrayList<>();
 	Set<String> dupSet=new HashSet<>();
 	/**
-	 * the main start method for SearchController
-	 * @param mainStage the Stage to execute on
-	 * @param user the current User 
-	 * @param users the list of available Users
+	 * starting method of this class
+	 * @param mainStage this stage is executing
+	 * @param user current user
+	 * @param users list of users
 	 */
 	public void start(Stage mainStage, User user, List<User> users) {
 				
@@ -123,18 +150,18 @@ public class SearchController {
 	}
 	
 	/**
-	 * Creates an Album from the search results
-	 * @param e the ActionEvent to activate sCreateAlbum
+	 * creates album from search
+	 * @param e activates sCreateAlbum
 	 */
 	public void sCreateAlbum(ActionEvent e) {
 		Set<String> dupSet=new HashSet<>();
 		if (photoListView.getItems().size()==0 || photoListView==null) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setHeaderText("The search generated no results to create an album");
+			alert.setHeaderText("Search had no results to create an album");
 			alert.showAndWait();
 		}
 		else {
-			Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure you want to create an album from the search results?" , ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+			Alert alert = new Alert(AlertType.CONFIRMATION, "Confirm creating an album from the search results?" , ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
 			alert.showAndWait();
 			if (alert.getResult() == ButtonType.YES) {
 				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd '@' HH:mm:ss");
@@ -156,7 +183,7 @@ public class SearchController {
 	}
 	/**
 	 * confirms the tag selection criteria
-	 * @param e the ActionEvent to activate confirm
+	 * @param e activates confirm()
 	 */
 	public void confirm(ActionEvent e) {
 	
@@ -166,7 +193,7 @@ public class SearchController {
 			}
 			catch(Exception ex) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setHeaderText("Please select appropriate tag type");
+			alert.setHeaderText("Please choose the right tag type");
 			alert.showAndWait();
 			return;
 			}
@@ -177,7 +204,7 @@ public class SearchController {
 		}
 		catch(Exception ex) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setHeaderText("Please select appropriate tag value");
+			alert.setHeaderText("Please choose the right tag tag value");
 			alert.showAndWait();
 			return;
 		}
@@ -191,7 +218,7 @@ public class SearchController {
 		}
 		else {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setHeaderText("This tag already exists in the list");
+			alert.setHeaderText("This tag already exists");
 			alert.showAndWait();
 			
 		}
@@ -234,12 +261,12 @@ public class SearchController {
 			}
     	}else {
     		Alert alert = new Alert(AlertType.ERROR);
-			alert.setHeaderText("No selected tag to delete!");
+			alert.setHeaderText("No tag chose to delete");
 			alert.showAndWait();
 		}
 	}
 	/**
-	 * searches all available Albums under this User and adds the respective Photos that fall into the search criteria to the ListView
+	 * searches all Albumsfor user and adds phots from search
 	 * @throws ParseException ParseException
 	 */
 	public void searchP() throws ParseException {
@@ -256,7 +283,7 @@ public class SearchController {
 				 Calendar photoDate=photo.getPhotoDate();
 				 if ((from.getValue() != null && to.getValue() == null) ||(from.getValue() == null && to.getValue() != null) ) {
 						Alert alert = new Alert(AlertType.ERROR);
-						alert.setHeaderText("Please Enter both the dates");
+						alert.setHeaderText("Please enter both dates");
 						alert.showAndWait();
 						return;
 				 }
@@ -308,7 +335,7 @@ public class SearchController {
 		displayList();
 	}
 	/**
-	 * displays the searched Photos in the ListView
+	 * displays searched photos
 	 */
 	public void displayList() {
 		photoListView.getItems().clear();
@@ -335,8 +362,8 @@ public class SearchController {
 	});
 	}
 	/**
-	 * Auto saves the data for future opening
-	 * @param users the list of authorized Users
+	 * auto saves admin data
+	 * @param users users to save data for
 	 */
 	private static void autoSave(List<User> users) {
 		try {
@@ -351,7 +378,7 @@ public class SearchController {
 		}
 	}
 	/**
-	 * clears the searched date ranges
+	 * clears the searched date
 	 */
 	public void clear() {
 		from.setValue(null);

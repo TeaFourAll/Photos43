@@ -9,38 +9,38 @@ import java.util.*;
  */
 public class Photo implements Serializable {
 	/**
-	 * The serial ID for this class
+	 * ID of class
 	 */
 	private static final long serialVersionUID = 6955723612371190680L;
 	/**
-	 * the caption of the Photo
+	 * caption for photo
 	 */
 	public String photoCaption;
 	/**
-	 * the name of the Photo
+	 * name of photo
 	 */
 	public String photoName;
 	/**
-	 * the date the Photo was taken
+	 * date of photo
 	 */
 	public Calendar photoDate;
 	/**
-	 * the List of Tags tagged to the Photo
+	 * list of tags for photo
 	 */
 	public List<Tag> photoTags;
 	/**
-	 * the filepath of the Photo
+	 * filepath of photo
 	 */
 	public String source;
-  //	private File pics;
+
 
 	/**
 	 * Constructor with 4 arguments
 	 * 
-	 * @param name  the filename of the Photo
-	 * @param caption  the caption of the Photo 
-	 * @param date  the date the Photo was taken
-	 * @param source  the filepath of the Photo
+	 * @param name filename of photo
+	 * @param caption  caption of photo 
+	 * @param date  date photo was taken
+	 * @param source  filepath of photo
 	 */
 	public Photo(String name,String caption, Calendar date, String source) {
 		this.photoName=name;
@@ -51,43 +51,43 @@ public class Photo implements Serializable {
 		this.source = source;
 	}
 	/**
-	 * gets the date the Photo was taken
-	 * @return the date the Photo was taken
+	 * gets date photo was taken
+	 * @return date photo was taken
 	 */
 	public Calendar getPhotoDate() {
 		return this.photoDate;
 	}
 	/**
-	 * gets the List of Tags belonging to this Photo
-	 * @return the List of Tags belonging to this Photo
+	 * gets list of tags for this photo
+	 * @return list of tags for this photo
 	 */
 	public List<Tag> getPhotoTags() {
 		return this.photoTags;
 	}
 	/**
-	 * gets the caption of this Photo
-	 * @return the String caption for this Photo
+	 * gets caption of photo
+	 * @return the caption for photo
 	 */
 	public String getPhotoCaption() {
 		return this.photoCaption;
 	}
 	/**
-	 * gets the name of this Photo
-	 * @return the filename of this Photo
+	 * gets name of photo
+	 * @return filename of photo
 	 */
 	public String getPhotoName(){
 		return this.photoName;
 	}
 	/**
-	 * sets the caption of the photo to specified String
-	 * @param caption the caption to save under the Photo
+	 * sets caption of photo to new String
+	 * @param caption caption to save under photo
 	 */
 	public void setPhotoCaption(String caption) {
 		this.photoCaption=caption;
 	}
 	/**
-	 * gets the filepath for this Photo
-	 * @return String this.source the filepath for this Photo
+	 * gets filepath for photo
+	 * @return filepath for photo
 	 */
 	public String getPhotoSource(){
 		return this.source;

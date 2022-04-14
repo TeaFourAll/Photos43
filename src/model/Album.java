@@ -10,49 +10,52 @@ import java.util.*;
 public class Album implements Serializable {
 	
 	/**
-	 * The serial ID of the class
+	 * ID of class
 	 */
 	private static final long serialVersionUID = -4143935150417416554L;
 	/**
-	 * the name of the Album
+	 * name of album
 	 */
 	public String albumName;
 	/**
-	 * the list of photos in this Album
+	 * list of photos
 	 */
 	public List<Photo> photos;
+
 	/**
 	 * constructor with 1 argument
-	 * @param name of the Album
+	 * @param name of album
 	 */
 	public Album(String name) {
 		this.albumName=name;
 		this.photos=new ArrayList<>();
 	}
+
 	/**
-	 * gets the name of the Album
+	 * gets name of album
 	 * @return Album name
 	 */
 	public String getAlbumName() {
 		return this.albumName;
 	}
+
 	/**
-	 * gets the list of Photos in this Album
-	 * @return the list of Photos
+	 * gets the list of photos in this album
+	 * @return the list of photos
 	 */
 	public List<Photo> getPhotos(){
 		return this.photos;
 	}
 	/**
-	 * gets the size of this Album
-	 * @return the length of the Photo list
+	 * gets the size of this album
+	 * @return the size of the photo list
 	 */
 	public int getAlbumSize() {
 		return this.photos.size();
 	}
 	/**
-	 * adds a Photo object into the list of Photos
-	 * @param photo the photo to be added to the Album
+	 * adds a photo into the list of photos
+	 * @param photo the photo being added to album
 	 */
 	public void addPhoto(Photo photo) {
 		photos.add(photo);

@@ -25,120 +25,132 @@ import model.*;
 
 import java.text.*;
 /**
- * handles  user control and logic for photo display
+ * handles user control and logic for photo display
  * @author Michelle Dong
  * @author Julio Johnson Lopez
  *
  */
 public class PhotoDisplayController {
 	/**
-	 * The current Album accessed
+	 * current album 
 	 */
 	private Album currentAlbum;
 	/**
-	 * The User that is currently logged in
+	 * current user
 	 */
 	private User currentUser;
 	/**
-	 * The List of Users
+	 * list of users
 	 */
 	private List<User> users;
 	
 	/**
-	 * The FXML Button to enable the addition of a new Tag
+	 * button to add a tag
 	 */
 	@FXML
 	Button addTag;
 	/**
-	 * The FXML Button to delete an existing Tag
+	 * button to delete a tag
 	 */
 	@FXML
-	Button delTag;
+	Button deleteTag;
 	/**
-	 * The FXML Button to start moving a photo from one Album to another
+	 * button to move photo from an album
 	 */
 	@FXML
 	Button movePhotoP;
 	/**
-	 * The FXML Button to start copying a photo from one Album to another
+	 * button to copy a photo to an album
 	 */
 	@FXML
 	Button copyPhoto;
 	/**
-	 * The FXML Button to go back to the AlbumDisplay screen
+	 * button that takes back to album display screen
 	 */
 	@FXML
 	Button backToAlbum;
 	/**
-	 * The FXML Button to cancel (re)captioning a Photo
+	 * button the cancels captioning photo
 	 */
 	@FXML
 	Button captionCancel;
 	/**
-	 * The FXML ListView displaying the current Photos in the Album
+	 * listview of current photos in album
 	 */
 	@FXML
 	ListView<Photo> photoList;
 	/**
-	 * The FXML TextField displaying the date that the selected Photo was captured on
+	 * textfield with date of photo
 	 */
 	@FXML
 	TextField dateCapturedField;
 	/**
-	 * The FXML TextField displaying the caption of the selected Photo
+	 * textfield with caption of photo
 	 */
 	@FXML
 	TextField caption;
 	/**
-	 * The FXML TextField displaying the name of the accessed Album
+	 * textfield with current album name
 	 */
 	@FXML
 	TextField albumHeader;
 	/**
-	 * The FXML TextField allowing the User to insert a NAME parameter for a Tag
+	 * textfield to put a name for a tag
 	 */
 	@FXML
 	TextField tagNameField;
 	/**
-	 * The FXML TextField allowing the User to insert a VALUE parameter for a Tag
+	 * textfield to put a value for a tag
 	 */
 	@FXML
 	TextField tagValueField;
 	/**
-	 * The FXML ListView displaying the Tags of the selected Photo
+	 * listview of tags
 	 */
 	@FXML
 	ListView<Tag> tagListView;
 	/**
-	 * The FXML Button to enable the (re)captioning of a Photo
+	 * button to caption a photo
 	 */
 	@FXML
 	Button addCaptionButton;
 	/**
-	 * The FXML Button to confirm the (re)captioning of a Photo
+	 * button to confirm the captioning
 	 */
 	@FXML	
 	Button confirmCaption;
 
 	/**
-	 * The FXML ImageView to display the currently selected Photo
+	 * imageview of current photo
 	 */
 
 	@FXML
 	ImageView photoView;
 	/**
-	 * The FXML Button to confirm the addition of new Tags to a Photo
+	 * button to confirm tags
 	 */
 	@FXML	
 	Button confirmTag;
 	/**
-	 * The FXML Button to cancel an attempted Tag add
+	 * button to cancel the making of a tag
 	 */
 	@FXML	
 	Button cancelTag;
-	
+	/**
+	 * text field for album
+	 */
 	@FXML
 	TextField albumField;
+	/**
+	 *   button that confirms the move of a photo
+	 */
+	@FXML 
+	Button confirmMove;
+	/**
+	 *   button that identifies a photo
+	 */
+	@FXML
+	Button identifier;
 	
 	
 	
@@ -146,32 +158,24 @@ public class PhotoDisplayController {
 
 	List<Photo> list=new ArrayList<>();
 	/**
-	 * The most recently used caption 
+	 * the last made caption
 	 */
 	String lastCaption = "";
 	
 	/**
-	 * The ObservableList displaying the List of Photos
+	 * observable list of photos
 	 */
 	private ObservableList<Photo> obsList;  
 
-	/**
-	 *   Button to confirm move/copy of a photo to a specific album
-	 */
-	@FXML 
-	Button confirmMove;
-	
-	@FXML
-	Button identifier;
 
 	/**
-	 * The main start method of PhotoDisplayController
-	 * @param mainStage the Stage to execute on
-	 * @param album the currently accessed Album
-	 * @param user the User that's currently logged in
-	 * @param users the list of available Users
-	 * @param photoList the list of photos in this Album
-	 * @throws IOException
+	 * starting method of this class
+	 * @param mainStage this stage is executing
+	 * @param album current album
+	 * @param user current user
+	 * @param users list of users
+	 * @param photoList list of photos for current album
+	 * @throws IOException IOException
 	 */
 	public void start(Stage mainStage,Album album, User user,List<User> users, List<Photo> photoList) throws IOException {
 		this.list=photoList;
@@ -202,41 +206,19 @@ public class PhotoDisplayController {
 			  }
 		  });
 		
-//<<<<<<< Updated upstream
-		/*movePhoto.setOnAction(e -> {
-			try {
-				movePhoto(e);
-			}catch (IOException e1) {
-				//System.out.println("bruh exception");
-			}
-		});*/
-		
-		/*copyPhoto.setOnAction(e -> {
-			try {
-				copyPhoto(e);
-			}catch (IOException e1) {
-				//System.out.println("bruh exception");
-			}
-		});*/
-		
 
-
-		
 		this.photoList
 		.getSelectionModel()
 		.selectedIndexProperty()
 		.addListener(
 				(obs, oldVal, newVal) -> 
 				photoDetail(mainStage));
-	
-		//this.photoList.setItems(FXCollections.observableArrayList(photoList));
-		
 		
 		
 	}
 	/**
-	 * Displays the image, caption, date taken, and Tags of the current Photo on the bottom display area upon selection of a ListView item
-	 * @param mainStage the stage to execute on
+	 * shows the image, caption, date taken, and tags of the current photo after picking a listview item
+	 * @param mainStage this stage is executing
 	 */
 	private void photoDetail(Stage mainStage) { 
 		if (!photoList.getSelectionModel().isEmpty()) {
@@ -249,18 +231,12 @@ public class PhotoDisplayController {
 			Calendar date=photo.getPhotoDate();
 			caption.setText(cap);
 			dateCapturedField.setText(dateTimeformat.format(date.getTime()));
-/*<<<<<<< Updated upstream
-			List<Tag> tags=photo.getPhotoTags();
-			tagListView.setItems(FXCollections.observableArrayList(photoList.getSelectionModel().getSelectedItem().getPhotoTags()));
-=======*/
 			this.tagListView.setItems(FXCollections.observableArrayList(this.photoList.getSelectionModel().getSelectedItem().getPhotoTags()));
-			
-
 		}
 	}
 	/**
-	 * Displays the image, caption, date taken, and Tags of the current Photo on the bottom display area without selection of a ListView item
-	 * @param mainStage the stage to execute on
+	 * shows the image, caption, date taken, and tags of the current photo w/o picking a listview item
+	 * @param mainStage this stage is executing
 	 */
 	private void photoDetailV2() {
 		if (!photoList.getSelectionModel().isEmpty()) {
@@ -280,8 +256,8 @@ public class PhotoDisplayController {
 		}
 	}
 	/**
-	 * Redirects back to the AlbumDisplay screen
-	 * @throws IOException
+	 * goes back to the albumdisplay screen
+	 * @throws IOException IOException
 	 */
 	public void backToAlbum() throws IOException {
 		Stage stage = new Stage();
@@ -297,12 +273,12 @@ public class PhotoDisplayController {
 		
 	}
 	/**
-	 * Opens up a FileChooser to allow the User to add a new Photo, then add it into currentAlbum if the conditions are satisfied
-	 * @param e the ActionEvent to activate addPhoto()
+	 * if all is good will allow usser to add a new photo to the current album
+	 * @param e activate addPhoto()
 	 */
 	public void addPhoto(ActionEvent e) {
 		FileChooser photoPicker = new FileChooser();
-		photoPicker.setTitle("Please select an image to import");
+		photoPicker.setTitle("Please choose an image to import");
 		photoPicker.getExtensionFilters().addAll(new ExtensionFilter("Image Files", "*.bmp", "*.BMP", "*.gif", "*.GIF", "*.jpg", "*.JPG", "*.png", "*.PNG"));	
 		File chosenPicture = photoPicker.showOpenDialog(null);
 		
@@ -312,16 +288,14 @@ public class PhotoDisplayController {
 			Calendar photoDate = Calendar.getInstance();
 			photoDate.setTimeInMillis(chosenPicture.lastModified());
 			
-			//photoDate.set(Calendar.MILLISECOND,0);
+			
 			Photo photoToBeAdded = new Photo(name, "", photoDate, chosenPicture.toURI().toString());
 			
 			for (Photo currentPhoto : currentAlbum.getPhotos()) {
 				if ( (currentPhoto.getPhotoName().equals(photoToBeAdded.getPhotoName())) && (currentPhoto.getPhotoSource().equals(photoToBeAdded.getPhotoSource()))) {
 					Alert alert = new Alert(AlertType.ERROR);
-					alert.setTitle("Error in Adding New Photo");
-					//alert.setHeaderText("Photo Add Error.");
-					alert.setContentText("This photo already exists in the album");
-
+					alert.setTitle("Error in Adding Photo");
+					alert.setContentText("This photo already exists in this album");
 					alert.showAndWait();
 					return;
 
@@ -342,8 +316,8 @@ public class PhotoDisplayController {
 		
 	}
 	/**
-	 * Deletes a Photo from the current Album 
-	 * @param e the ActionEvent to activate delPhoto()
+	 * delets photo from album
+	 * @param e activates delPhoto()
 	 */
 	public void delPhoto(ActionEvent e) {
 	if (photoList.getSelectionModel().getSelectedItem() != null) {
@@ -372,40 +346,36 @@ public class PhotoDisplayController {
 			}
     	}else {
     		Alert alert2 = new Alert(AlertType.ERROR);
-			alert2.setHeaderText("No selected album to delete!");
+			alert2.setHeaderText("No album chosen to delete");
 			alert2.showAndWait();
 		}
 	
 	}
 	/**
-	 * Enables the moving of a Photo from this Album to another Album
-	 * @throws IOException
+	 * moves a photo from one album to another
+	 * @throws IOException IOException
 	 */
 
 	public void movePhoto(ActionEvent e) throws IOException {
 		identifier=(Button) e.getSource();
 		if (photoList.getSelectionModel().getSelectedItem()==null) {
 			Alert errorAlert = new Alert(AlertType.ERROR);
-			errorAlert.setHeaderText("No photo selected to move/transfer");
+			errorAlert.setHeaderText("No photo chosen to move");
 			errorAlert.showAndWait();
 			return;
 		}
-		
-	
 		albumField.setVisible(true);
 		confirmMove.setVisible(true);
-
-
 	}
 	/**
-	 * Enables the copying of a Photo from this Album to another Album
-	 * @throws IOException
+	 * cpies a photo from one album to another
+	 * @throws IOException IOException
 	 */
 	public void copyPhoto(ActionEvent e) throws IOException{
 		identifier=(Button) e.getSource();
 		if (photoList.getSelectionModel().getSelectedItem()==null) {
 			Alert errorAlert = new Alert(AlertType.ERROR);
-			errorAlert.setHeaderText("No photo selected to move/transfer");
+			errorAlert.setHeaderText("No photo chosen to move");
 			errorAlert.showAndWait();
 			return;
 		}
@@ -425,7 +395,7 @@ public class PhotoDisplayController {
 	public void addTag(ActionEvent e) {
 		if (photoList.getSelectionModel().getSelectedItem()==null) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setHeaderText("No photo selected to add tags");
+			alert.setHeaderText("No photo chosen to add tags");
 			alert.showAndWait();
 		}
 		else {
@@ -436,10 +406,10 @@ public class PhotoDisplayController {
 		}
 	}
 	/**
-	 * Deletes the currently selected Tag from the selected Photo.
-	 * @param e the ActionEvent to activate delTag()
+	 * deletes tag from photo
+	 * @param e activate deleteTag()
 	 */
-	public void delTag(ActionEvent e) {
+	public void deleteTag(ActionEvent e) {
 		if (tagListView.getSelectionModel().getSelectedItem() != null) {
 			Photo photoToBeRemoved = photoList.getSelectionModel().getSelectedItem();
     		Tag tagToBeRemoved = tagListView.getSelectionModel().getSelectedItem();
@@ -454,46 +424,46 @@ public class PhotoDisplayController {
 			}
     	} else {
     		Alert alert2 = new Alert(AlertType.ERROR);
-			alert2.setHeaderText("No selected tag name-value to delete!");
+			alert2.setHeaderText("No tag name-value chosen to delete");
 			alert2.showAndWait();
 		}
 		
 	}
 	/**
-	 * Selects the preceding Photo in the Album
-	 * @param e the ActionEvent to activate prevPhoto
+	 * chooses previous photo in album
+	 * @param e activate prevPhoto()
 	 */
 	public void prevPhoto(ActionEvent e) {
-		//System.out.println("yuh");
+		
 		if (!photoList.getSelectionModel().isEmpty() && photoList.getSelectionModel().getSelectedIndex() != 0) {
 			photoList.getSelectionModel().select(photoList.getSelectionModel().getSelectedIndex()-1);
 			photoDetailV2();
 		}
 	}
 	/**
-	 * Selects the next Photo in the Album
-	 * @param e the ActionEvent to activate nextPhoto
+	 * chooses next photo in album
+	 * @param e activates nextPhoto()
 	 */
 	public void nextPhoto(ActionEvent e) {
-		//System.out.println("thank u next");
+		
 		if (!photoList.getSelectionModel().isEmpty() /*&& not greater than size of available list*/ ) {
 			photoList.getSelectionModel().select(photoList.getSelectionModel().getSelectedIndex()+1);
 			photoDetailV2();
 		}
 	}
 	/**
-	 * Confirms the addition of new Tags to the selected Photo should it meet the criteria
-	 * @param e the ActionEvent to activate confirmAddTag()
+	 * confirms new tags to be added to picture
+	 * @param e activates confirmAddTag()
 	 */
 	public void confirmAddTag(ActionEvent e) {
 		if ((tagNameField.getText().trim().length()==0 || tagNameField.getText()==null) ) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setHeaderText("Tag name can't be empty! Please enter legitimate values");
+			alert.setHeaderText("Tag name can't be empty, please try again");
 			alert.showAndWait();
 		}
 		else {
 	
-				Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure you want to add this tag name-value pair?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+				Alert alert = new Alert(AlertType.CONFIRMATION, "Confirmation on this tag name-value pair?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
 				alert.showAndWait();
 				if (alert.getResult() == ButtonType.YES) {
 					Photo selectedPhoto=photoList.getSelectionModel().getSelectedItem();
@@ -502,7 +472,7 @@ public class PhotoDisplayController {
 					for (Tag ptag:photoTags) {
 						if ((ptag.tagName.equals(tag.tagName)) && (ptag.tagValue.equals(tag.tagValue))) {
 							Alert erroralert = new Alert(AlertType.ERROR);
-							erroralert.setHeaderText("This tag name-value pair already exists!");
+							erroralert.setHeaderText("This tag name-value pair already exists in this album");
 							erroralert.showAndWait();
 							return;
 						}
@@ -528,13 +498,13 @@ public class PhotoDisplayController {
 	
 	}
 	/**
-	 * Enables the captioning (or recaptioning) the currently selected Photo.
-	 * @param e the ActionEvent to activate addCaption()
+	 * captions photo
+	 * @param e activates addCaption()
 	 */
 	public void addCaption(ActionEvent e) {
 		if (photoList.getSelectionModel().getSelectedItem()==null) {
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setHeaderText("No photo selected to add Caption");
+			alert.setHeaderText("No photo chosen to add a Caption");
 			alert.showAndWait();
 		}
 		else {
@@ -545,13 +515,13 @@ public class PhotoDisplayController {
 		}
 	}
 	/**
-	 * Confirms the captioning (or recaptioning) of the currently selected Photo
-	 * @param e the ActionEvent to activate confirm()
+	 * confirms captioning of photo
+	 * @param e activates confirm()
 	 */
 	public void confirm(ActionEvent e) {
 		
 	
-				Alert alert = new Alert(AlertType.CONFIRMATION, "Set " + caption.getText() + " as caption for this picture?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+				Alert alert = new Alert(AlertType.CONFIRMATION, "Confirm " + caption.getText() + " as caption for this Photo?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
 	
 				alert.showAndWait();
 				if (alert.getResult() == ButtonType.YES) {
@@ -566,13 +536,10 @@ public class PhotoDisplayController {
 
 				
 				}
-	
-			
-		//}
 	}
 	/**
-	 * Cancels the current attempted caption/recaptioning of the currently selected Photo, and sets the caption to the last known caption
-	 * @param e the ActionEvent to activate captionCancel()
+	 * cancels attempted caption
+	 * @param e activates captionCancel()
 	 */
 	public void captionCancel(ActionEvent e) {
 		caption.setEditable(false);
@@ -582,7 +549,9 @@ public class PhotoDisplayController {
 	}
 
 	/**
-	 * Cancels the addition of a new Tag by enabling respective buttons
+	 * cancels new tag
+	 * 	 * @param e activates tagCancel()
+
 	 */
 	public void tagCancel(ActionEvent e) {
 		tagNameField.setVisible(false);
@@ -591,7 +560,7 @@ public class PhotoDisplayController {
 		cancelTag.setVisible(false);
 	}
 	/**
-	 * Displays the current Album's Photos and their captions
+	 * shows the current albums photos and captions
 	 */
 	public void displayList() {
 		obsList = FXCollections.observableArrayList(this.list); 
@@ -617,8 +586,9 @@ public class PhotoDisplayController {
 		});
 		
 	}
+
 	/**
-	 * Confirms the moving of a Photo from one Album to another, using the identifier to determine whether to copy or move
+	 * confrims moving photo
 	 */
 	public void moveConfirm() {
 			Photo photoToBeMoved=photoList.getSelectionModel().getSelectedItem();
@@ -630,10 +600,9 @@ public class PhotoDisplayController {
 					for (Photo photo:alb.getPhotos()) {
 						if ((photo.getPhotoName().equals(photoToBeMoved.getPhotoName())) && (photo.getPhotoSource().equals(photoToBeMoved.getPhotoSource()))) {
 							Alert palert = new Alert(AlertType.ERROR);
-							palert.setHeaderText("This photo is already present in the other album");
+							palert.setHeaderText("This photo is already exists in the other album");
 							palert.showAndWait();
 							return;
-						//	return "error";
 						}
 					}
 					
@@ -652,15 +621,15 @@ public class PhotoDisplayController {
 				}
 			}
 			Alert palert = new Alert(AlertType.ERROR);
-			palert.setHeaderText("This album doesn't exist in your account");
+			palert.setHeaderText("This album doesn't exist");
 			palert.showAndWait();
 			albumField.clear();
 			
 		
 	}
 	/**
-	 * Auto saves the current user data for future opening
-	 * @param users the Users to save data to
+	 * autosaves admin data
+	 * @param users the users data to b saved
 	 */
 	public static void autoSave(List<User> users) {
 		try {
