@@ -43,7 +43,63 @@ public class PhotoDisplayController {
 	 * list of users
 	 */
 	private List<User> users;
-	
+
+	/**
+	 * listview of current photos in album
+	 */
+	@FXML
+	ListView<Photo> photoList;
+	/**
+	 * imageview of current photo
+	 */
+
+	@FXML
+	ImageView photoView;
+	/**
+	 * textfield with date of photo
+	 */
+	@FXML
+	TextField dateCapturedField;
+	/**
+	 * textfield with caption of photo
+	 */
+	@FXML
+	TextField caption;
+	/**
+	 * textfield with current album name
+	 */
+	@FXML
+	TextField albumHeader;
+	/**
+	 * text field for album
+	 */
+	@FXML
+	TextField albumField;
+	/**
+	 * textfield to put a name for a tag
+	 */
+	@FXML
+	TextField tagNameField;
+	/**
+	 * textfield to put a value for a tag
+	 */
+	@FXML
+	TextField tagValueField;
+	/**
+	 * listview of tags
+	 */
+	@FXML
+	ListView<Tag> tagListView;
+	/**
+	 * button to caption a photo
+	 */
+	@FXML
+	Button addCaptionButton;
+	/**
+	 * button to confirm the captioning
+	 */
+	@FXML	
+	Button confirmCaption;
 	/**
 	 * button to add a tag
 	 */
@@ -75,58 +131,6 @@ public class PhotoDisplayController {
 	@FXML
 	Button captionCancel;
 	/**
-	 * listview of current photos in album
-	 */
-	@FXML
-	ListView<Photo> photoList;
-	/**
-	 * textfield with date of photo
-	 */
-	@FXML
-	TextField dateCapturedField;
-	/**
-	 * textfield with caption of photo
-	 */
-	@FXML
-	TextField caption;
-	/**
-	 * textfield with current album name
-	 */
-	@FXML
-	TextField albumHeader;
-	/**
-	 * textfield to put a name for a tag
-	 */
-	@FXML
-	TextField tagNameField;
-	/**
-	 * textfield to put a value for a tag
-	 */
-	@FXML
-	TextField tagValueField;
-	/**
-	 * listview of tags
-	 */
-	@FXML
-	ListView<Tag> tagListView;
-	/**
-	 * button to caption a photo
-	 */
-	@FXML
-	Button addCaptionButton;
-	/**
-	 * button to confirm the captioning
-	 */
-	@FXML	
-	Button confirmCaption;
-
-	/**
-	 * imageview of current photo
-	 */
-
-	@FXML
-	ImageView photoView;
-	/**
 	 * button to confirm tags
 	 */
 	@FXML	
@@ -136,11 +140,6 @@ public class PhotoDisplayController {
 	 */
 	@FXML	
 	Button cancelTag;
-	/**
-	 * text field for album
-	 */
-	@FXML
-	TextField albumField;
 	/**
 	 *   button that confirms the move of a photo
 	 */

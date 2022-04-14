@@ -24,6 +24,23 @@ import javafx.event.*;
  *
  */
 public class AdminController {
+	
+	/**
+	 * listview of users
+	 */
+	@FXML
+	ListView<User> userList;
+	/**
+	 * textfield to add user
+	 */
+	@FXML
+	TextField userField;
+	
+	/**
+	 * button to logout
+	 */
+	@FXML
+	Button aLogout;
 	/**
 	 * button to add new user
 	 */
@@ -34,23 +51,6 @@ public class AdminController {
 	 */
 	@FXML
 	Button delUser;
-	/**
-	 * listview of users
-	 */
-	@FXML
-	ListView<User> userList;
-
-	/**
-	 * button to logout
-	 */
-
-	@FXML
-	Button aLogout;
-	/**
-	 * textfield to add user
-	 */
-	@FXML
-	TextField userField;
 	/** 
 	 * button to confirm a new user
 	 */

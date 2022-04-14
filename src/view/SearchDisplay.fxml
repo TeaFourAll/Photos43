@@ -8,21 +8,21 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.DatePicker?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="671.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchController">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="671.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchController">
    <children>
       <ListView fx:id="tagListView" layoutX="34.0" layoutY="150.0" prefHeight="125.0" prefWidth="400.0" />
-      <Button fx:id="sCreateAlbum" layoutX="270.0" layoutY="14.0" mnemonicParsing="false" text="Create Album from Search" onAction="#sCreateAlbum"/>
+      <Button fx:id="sCreateAlbum" layoutX="265.0" layoutY="14.0" mnemonicParsing="false" text="Create an Album from a Search" onAction="#sCreateAlbum"/>
       <Button fx:id="sBacktoAlbums" layoutX="42.0" layoutY="14.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" text="Back to Albums" onAction="#backToAlbum"/>
       <Button fx:id="clearDates" layoutX="375.0" layoutY="90.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="125.0" text="Clear Dates" onAction="#clear"/>
 	  <ChoiceBox fx:id = "TypeChoiceBox" layoutX="100.0" layoutY="50.0" prefHeight="25.0" prefWidth="128.0" />
       <ChoiceBox fx:id = "ValueChoiceBox" layoutX="350.0" layoutY="50.0" prefHeight="25.0" prefWidth="123.0" />
-      <Button fx:id="addTag" layoutX="525.0" layoutY="50.0" mnemonicParsing="false" text="Add tag pair for search" onAction="#confirm"/>
-      <Button fx:id="delTag" layoutX="525.0" layoutY="100.0" mnemonicParsing="false" text="Delete tag pair" onAction="#confirmDel"/>
-      <Button fx:id="search" layoutX="450.0" layoutY="225.0" mnemonicParsing="false" text="Search!" onAction="#searchP"/>
+      <Button fx:id="addTag" layoutX="525.0" layoutY="50.0" mnemonicParsing="false" text="Add tag pair to search" onAction="#confirm"/>
+      <Button fx:id="delTag" layoutX="525.0" layoutY="100.0" mnemonicParsing="false" text="Delete tags" onAction="#confirmDel"/>
+      <Button fx:id="search" layoutX="450.0" layoutY="225.0" mnemonicParsing="false" text="Search" onAction="#searchP"/>
       <Label layoutX="280.0" layoutY="53.0" text="Tag values:" />
       <ListView fx:id="photoListView" layoutX="34.0" layoutY="350.0" prefHeight="250.0" prefWidth="400.0" />
       <DatePicker fx:id="from" prefHeight="25.0" prefWidth="120.0"  layoutX="100.0" layoutY="90.0" promptText="Start" />
-      <DatePicker fx:id="to" prefHeight="25.0" prefWidth="120.0"  layoutX="250.0" layoutY="90.0" promptText="End" />
+      <DatePicker fx:id="to" prefHeight="25.0" prefWidth="120.0"  layoutX="250.0" layoutY="90.0" promptText="Finish" />
        <Label layoutX="38.0" layoutY="53.0" text="Tag types:" />
        <Label layoutX="40.0" layoutY="320.0" text="Search Results:" />
    </children>

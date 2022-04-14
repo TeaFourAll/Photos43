@@ -34,21 +34,6 @@ import javafx.stage.Stage;
 public class SearchController {
 
 	/**
-	 * button to create album from search
-	 */
-	@FXML
-    Button sCreateAlbum;
-	/**
-	 * button to go back to album from search
-	 */
-	@FXML
-    Button sBacktoAlbums;
-	/**
-	 * button to add a tag
-	 */
-	@FXML
-	Button addTag;
-	/**
 	 * current user
 	 */
 	User currentUser;
@@ -57,11 +42,6 @@ public class SearchController {
 	 */
 	@FXML
 	ChoiceBox<String> TypeChoiceBox;
-	/**
-	 * button to clear dates
-	 */
-	@FXML
-	Button clearDates;
 	/**
 	 * choice box for value of tag
 	 */
@@ -98,6 +78,28 @@ public class SearchController {
 	 */
 	@FXML
 	Button search;
+	/**
+	 * button to create album from search
+	 */
+	@FXML
+    Button sCreateAlbum;
+	/**
+	 * button to go back to album from search
+	 */
+	@FXML
+    Button sBacktoAlbums;
+	/**
+	 * button to add a tag
+	 */
+	@FXML
+	Button addTag;
+	/**
+	 * button to clear dates
+	 */
+	@FXML
+	Button clearDates;
+
+
    /**
 	 * list of users
 	 */

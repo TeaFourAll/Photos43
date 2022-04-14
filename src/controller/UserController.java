@@ -29,47 +29,7 @@ import javafx.event.ActionEvent;
  */
 
 public class UserController {
-	/**
-	 * button to logout
-	 */
-	@FXML
-	Button logout;
-	/**
-	 * button to create new album
-	 */
-	@FXML
-	Button newAlbum;
-	/**
-	 * button to rename album
-	 */
-	@FXML
-	Button renameAlbum;
-	/**
-	 * button to delete album
-	 */
-	@FXML
-	Button delAlbum;
-	/**
-	 * button to open an album
-	 */
-	@FXML
-	Button openAlbum;
-	/**
-	 * button to search
-	 */
-	@FXML
-	Button searchB;
-
-	/**
-	 * button to confrim rename
-	 */
-	@FXML
-	Button renameConfirm;
-	/**
-	 * button to cancel rename
-	 */
-	@FXML
-	Button renameCancel;
+	
 	/**
 	 * listview of albums
 	 */
@@ -120,6 +80,49 @@ public class UserController {
 	 */
 	@FXML
 	Button newAlbumCancel;
+	/**
+	 * button to logout
+	 */
+	@FXML
+	Button logout;
+	/**
+	 * button to create new album
+	 */
+	@FXML
+	Button newAlbum;
+	/**
+	 * button to rename album
+	 */
+	@FXML
+	Button renameAlbum;
+	/**
+	 * button to delete album
+	 */
+	@FXML
+	Button delAlbum;
+	/**
+	 * button to open an album
+	 */
+	@FXML
+	Button openAlbum;
+	/**
+	 * button to search
+	 */
+	@FXML
+	Button searchB;
+	/**
+	 * button to confrim rename
+	 */
+	@FXML
+	Button renameConfirm;
+	/**
+	 * button to cancel rename
+	 */
+	@FXML
+	Button renameCancel;
+
+
+
 	/**
 	 * current user
 	 */

@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="343.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminController">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="343.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminController">
    <children>
-     <TextField fx:id="userField" layoutX="78.0" layoutY="72.0" prefHeight="21.0" prefWidth="173.0" promptText= "Enter username of new user" />
+     <TextField fx:id="userField" layoutX="78.0" layoutY="72.0" prefHeight="21.0" prefWidth="173.0" promptText= "Enter new username" />
       <TextField alignment="CENTER" editable="false" layoutX="97.0" layoutY="20.0" text="WELCOME **ADMIN**" />
       <Button fx:id="addUser" layoutX="14.0" layoutY="40.0" mnemonicParsing="false" text="Add User" onAction="#addUser" />
       <Button fx:id="delUser" layoutX="265.0" layoutY="40.0" mnemonicParsing="false" text="Delete User" onAction="#delUser" />
